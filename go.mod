@@ -1,3 +1,3 @@
-module wttr-weather-mcp
+module github.com/cherya/wttr-weather-mcp
 
 go 1.24.0

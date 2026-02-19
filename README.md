@@ -12,9 +12,19 @@ wttr.in fetches data from the WorldWeatherOnline API and presents it as plain te
 
 All tools require a `location` parameter (city name, e.g. "London", "New York", "Tokyo").
 
-## Build
+## Installation
 
 ```bash
+go install github.com/cherya/wttr-weather-mcp@latest
+```
+
+The binary will be placed in `$GOPATH/bin/` (usually `~/go/bin/`).
+
+## Build from source
+
+```bash
+git clone https://github.com/cherya/wttr-weather-mcp.git
+cd wttr-weather-mcp
 go build -o wttr-weather-mcp .
 ```
 
@@ -26,13 +36,19 @@ go test -v ./...
 
 ## Usage with Claude Code
 
-Add to your MCP settings (stdio transport):
+Add to your MCP settings:
 
 ```json
 {
-  "command": "/path/to/wttr-weather-mcp"
+  "mcpServers": {
+    "wttr-weather": {
+      "command": "wttr-weather-mcp"
+    }
+  }
 }
 ```
+
+Make sure `$GOPATH/bin` is in your `PATH`, or use the full path to the binary.
 
 ## Dependencies
 

@@ -15,8 +15,8 @@ type WeatherClient struct {
 
 func NewWeatherClient() *WeatherClient {
 	return &WeatherClient{
-		httpClient: &http.Client{Timeout: 10 * time.Second},
-		baseURL:    "https://wttr.in",
+		httpClient: &http.Client{Timeout: 30 * time.Second},
+		baseURL:    "http://wttr.in",
 	}
 }
 
@@ -43,7 +43,7 @@ func (c *WeatherClient) fetch(rawURL string) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("creating request: %w", err)
 	}
-	req.Header.Set("User-Agent", "wttr-weather-mcp/1.0")
+	req.Header.Set("User-Agent", "curl/8.0")
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
